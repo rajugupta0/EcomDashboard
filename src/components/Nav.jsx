@@ -14,6 +14,14 @@ const Nav = () => {
   uniqueCategory =  [...new Set(uniqueCategory)];
   console.log(uniqueCategory);
 
+  const randomColor = () => {
+    return `rgba(${(Math.random()*255).toFixed()},
+    ${(Math.random()*255).toFixed()},
+    ${(Math.random()*255).toFixed()},0.6
+    )`
+  };
+  
+
 
 
   return (  
@@ -34,8 +42,8 @@ const Nav = () => {
           to={`/?category=${c}`}
           className="flex items-center mb-3"
         >
-          <span className="rounded-full mr-2 w-[15px] h-[15px] bg-blue-200"></span>{" "}
-          {c}
+          <span  className="rounded-full mr-2 w-[15px] h-[15px] bg-blue-200"></span>{" "}
+          <span style={{ color: randomColor() }}>{c}</span>
         </Link>
       ))}
 
