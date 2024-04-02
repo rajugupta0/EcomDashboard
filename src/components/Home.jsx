@@ -29,7 +29,7 @@ const getProductsCategory = async () => {
 
 
 useEffect(() => {
-  if (!FilterProducts) {
+  if (!FilterProducts || category == "undefined") {
     setFilterProducts(products)
   }
   if (category != "undefined") {
