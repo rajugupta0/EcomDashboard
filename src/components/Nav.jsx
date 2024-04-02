@@ -12,7 +12,7 @@ const Nav = () => {
   let uniqueCategory = products && products.reduce((acc,cv) => [...acc,cv.category], [])
 
   uniqueCategory =  [...new Set(uniqueCategory)];
-  console.log(uniqueCategory);
+  // console.log(uniqueCategory);
 
   const randomColor = () => {
     return `rgba(${(Math.random()*255).toFixed()},

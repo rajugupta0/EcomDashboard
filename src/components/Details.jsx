@@ -9,13 +9,13 @@ const Details = () => {
    const [product , setproduct]= useState(null);
 
   const {id} = useParams();
-  console.log(id);
+  // console.log(id);
 
   const getSingleProduct = async () => {
     try {
       const {data} = await axios.get(`/products/${id}`)
       setproduct(data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log(error);
     }
