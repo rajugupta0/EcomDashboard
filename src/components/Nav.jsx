@@ -50,9 +50,7 @@ const Nav = () => {
        
       </div>
 
-    </nav>
-
-    
+    </nav>   
   );
 };
 

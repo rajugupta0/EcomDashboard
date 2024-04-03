@@ -45,29 +45,31 @@ useEffect(() => {
 
   return (
     <>
-      <Nav />
-      {products ? (
-        <div className="h-full w-[85%] p-10 pt-[5%] flex flex-wrap overflow-x-hidden overflow-y-auto">
-          {FilterProducts && FilterProducts.map((product) => (
-            <Link
-              to={`/details/${product.id}`}
-              className="mr-3 mb-3 card p-3 border shadow rounded w-[18%] h-[32vh] flex flex-col justify-center items-center"
-              key={product.id}
-            >
-              <div
-                className="hover:scale-110 w-full h-[80%] bg-contain bg-no-repeat bg-center"
-                style={{
-                  backgroundImage: `url(${product.image})`
-                }}
-              ></div>
-              <h3 className="hover:text-blue-300">{product.title}</h3>
-            </Link>
-          ))}
-        </div>
-      ) : (
-        <Loading />
-      )}
-    </>
+    <Nav />
+    {products ? (
+      <div className="h-full w-full p-3 sm:p-10 pt-[5%] flex flex-wrap justify-center">
+        {FilterProducts && FilterProducts.map((product) => (
+          <Link
+            to={`/details/${product.id}`}
+            className="mr-3 mb-3 card p-3 border shadow rounded w-[90%] sm:w-[45%] lg:w-[30%] h-[50vh] flex flex-col justify-center items-center"
+            key={product.id}
+          >
+            <div
+              className="hover:scale-110 w-full h-[60%] bg-contain bg-no-repeat bg-center"
+              style={{
+                backgroundImage: `url(${product.image})`
+              }}
+            ></div>
+            <h3 className="hover:text-blue-300">{product.title}</h3>
+          </Link>
+        ))}
+      </div>
+    ) : (
+      <Loading />
+    )}
+  </>
+  
+
   );
 };
 

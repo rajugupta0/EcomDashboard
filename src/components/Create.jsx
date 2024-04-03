@@ -1,17 +1,54 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { ProductContext } from "../utils/Context";
+import { nanoid } from "nanoid";
+import axios from "../utils/axios";
 
 
 
 const Create = () => {
+
+    const [ Products, setProducts ]= useContext(ProductContext)
     const [title, setTitle] = useState("");
     const [image, setImage] = useState("");
     const [category, setCategory] = useState("");
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
 
+
+    const AddProductHandler = (e) => {
+        e.preventDefault();
+
+        if (
+            title === "" ||
+            image === "" ||
+            category === "" ||
+            price === "" ||  
+            description === ""
+        ) {
+            alert("Please fill all the fields");
+        }
+        const Product = {
+            id: nanoid(),
+            title,
+            image,
+            category,
+            price,
+            description
+        }
+        console.log(Product);
+        // setProducts([...Products, Product])
+        // console.log(setProducts);
+        
+        
+        axios.post("/products", Product)
+       .then(res => console.log(res))
+    }
+
+
+
   return (
     <>
-    <form className="flex flex-col items-center content-center p-[5%] w-screen h-screen">
+    <form onSubmit={AddProductHandler} className="flex flex-col items-center content-center p-[5%] w-screen h-screen">
     <h1 className="text-3xl p-2">Add New Product</h1>
 
     <input 
@@ -39,7 +76,7 @@ const Create = () => {
         type="number" placeholder="Price"  
         className="text-1.5xl bg-zinc-100 rounded w-1/1.8 p-3 h-2.5  mb-2"  
         onChange ={(e) =>  {setPrice(e.target.value)}}
-        value={title}   
+        value={price}   
          
     /> 
     </div>
@@ -52,6 +89,11 @@ const Create = () => {
             value={description} 
         
         ></textarea>
+    <button 
+      className='py-2 px-5 border rounded border-blue-200 text-blue-300 '  
+    >
+    Submit
+    </button>
     </form>
     </>
   )
